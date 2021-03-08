@@ -11,6 +11,7 @@ public class BankTest {
     String username;
     String password;
     Account account;
+
     @BeforeEach
     public void setup(){
         bankname="Scrooge McDuck Banking";
