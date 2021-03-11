@@ -1,5 +1,5 @@
 
-import hu.eszterhazy.DigitalBank;
+import hu.eszterhazy.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,8 @@ public class BankTest {
     public void setup(){
         bankname="Scrooge McDuck Banking";
         ownername="Scrooge McDuck";
-        digitalBank=new DigitalBank(ownername, bankname);
+        AccountDB accountDB= new AccountSQLDB();
+        digitalBank=new DigitalBank(ownername, bankname, accountDB);
         username="some_guy";
         password="123";
         account = new UserAccount(username, password);

@@ -6,17 +6,22 @@ public class DigitalBank implements Bank{
     private String ownerName;
     private String name;
     private final UUID id;
+    private AccountDB accountDB;
 
-    public DigitalBank(String ownerName, String name, UUID id) {
+
+    public DigitalBank(String ownerName, String name, UUID id, AccountDB accountDB) {
         this.ownerName = ownerName;
         this.name = name;
         this.id = id;
+        this.accountDB = accountDB;
     }
 
-    public DigitalBank(String ownerName, String name) {
+    public DigitalBank(String ownerName, String name, AccountDB accountDB) {
         this.ownerName = ownerName;
         this.name = name;
         this.id= UUID.randomUUID();
+        this.accountDB= accountDB;
+
     }
 
     public UUID getId() {
@@ -44,8 +49,14 @@ public class DigitalBank implements Bank{
         this.ownerName=ownerName;
     }
 
+    @Override
+    public void registerAccount(Account account) {
+
+    }
+
     public boolean authenticateAccount(String name, String password){
-        return false;
+       Account account= accountDB.queryAccount(name);
+       return account != null && account.getPassword().equals(password);
     }
 
 }

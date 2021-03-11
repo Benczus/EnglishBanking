@@ -11,4 +11,6 @@ public interface Bank {
     public String getOwnerName();
 
     public void setOwnerName(String ownerName);
+
+    void registerAccount(Account account);
 }

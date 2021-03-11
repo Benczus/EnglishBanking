@@ -10,13 +10,13 @@ public class PublicDigitalBank extends DigitalBank{
 
     private final UUID publicId;
 
-    public PublicDigitalBank(String ownerName, String name, UUID id) {
-        super(ownerName, name, id);
+    public PublicDigitalBank(String ownerName, String name, AccountDB accountDB) {
+        super(ownerName, name, accountDB);
         this.publicId = UUID.randomUUID();
     }
 
-    public PublicDigitalBank(String ownerName, String name) {
-        super(ownerName, name);
+    public PublicDigitalBank(String ownerName, String name,UUID id, AccountDB accountDB) {
+        super(ownerName, name, id, accountDB);
         this.publicId = UUID.randomUUID();
     }
 
@@ -25,6 +25,8 @@ public class PublicDigitalBank extends DigitalBank{
         return super.getName() + " Public Digital Bank";
     }
 
-
-
+    @Override
+    public boolean authenticateAccount(String name, String password) {
+        return super.authenticateAccount(name, password);
+    }
 }
